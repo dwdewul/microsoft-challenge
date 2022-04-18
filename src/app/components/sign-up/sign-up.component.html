@@ -16,9 +16,15 @@
     [formGroup]="signUpForm"
     (ngSubmit)="onSubmit()"
     (change)="onChange()"
+    *ngIf="!isLoading; else loadingSpinner"
   >
     <label class="label" for="first-name">First Name</label>
-    <input class="input" id="first-name" formControlName="firstName" />
+    <input
+      autocomplete="off"
+      class="input"
+      id="first-name"
+      formControlName="firstName"
+    />
     <small
       class="error-text"
       *ngIf="firstNameField?.hasError('required') && firstNameField?.touched"
@@ -39,4 +45,9 @@
       Sign Up
     </button>
   </form>
+  <ng-template #loadingSpinner>
+    <div class="spinnerContainer">
+      <span class="spinner"></span>
+    </div>
+  </ng-template>
 </div>

@@ -16,6 +16,8 @@ export class SignUpComponent implements OnInit {
     }),
   });
 
+  public isLoading: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
