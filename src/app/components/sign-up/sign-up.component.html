@@ -1,0 +1,42 @@
+<div class="form-wrapper">
+  <h2 class="font-weight-normal">Let's</h2>
+  <h2>Sign Up</h2>
+
+  <br />
+
+  <span class="helper-text"
+    >Use the form below to sign up for this super awesome service. You're only a
+    few steps away!</span
+  >
+
+  <div class="spacer-8"></div>
+
+  <form
+    class="signup"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+    (change)="onChange()"
+  >
+    <label class="label" for="first-name">First Name</label>
+    <input class="input" id="first-name" formControlName="firstName" />
+    <small
+      class="error-text"
+      *ngIf="firstNameField?.hasError('required') && firstNameField?.touched"
+      >First Name is required.</small
+    >
+
+    <label class="label" for="email-address">Email Address</label>
+    <input class="input" id="email-address" formControlName="email" />
+    <small class="error-text">{{ emailFieldErrorMessage }}</small>
+
+    <label class="label" for="password">Password</label>
+    <input class="input" id="password" formControlName="password" />
+    <small class="error-text">{{ passwordFieldErrorMessage }}</small>
+
+    <div class="spacer-8"></div>
+
+    <button [disabled]="!signUpForm.valid" class="button" type="submit">
+      Sign Up
+    </button>
+  </form>
+</div>

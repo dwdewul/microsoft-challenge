@@ -1,0 +1,29 @@
+@import "../../../styles/colors.scss";
+
+.label {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.input {
+  margin: 8px 0px;
+  height: 28px;
+  border-radius: 0.25rem;
+  border: 1px solid $light-gray;
+  color: $dark-gray;
+
+  ::placeholder {
+    color: $light-gray;
+  }
+}
+
+.helper-text {
+}
+
+.font-weight-normal {
+  font-weight: 400;
+}
+
+.error-text {
+  color: red;
+}

@@ -1,0 +1,39 @@
+@import "../styles/colors.scss";
+
+.button {
+  height: 32px;
+  padding: 8px 12px;
+  align-self: flex-end;
+  justify-self: end;
+  font-weight: 700;
+  background-image: linear-gradient(
+    to bottom right,
+    #ff3f19 0%,
+    #ff2727 51%,
+    #ff1345 100%
+  );
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+
+  &:active {
+    cursor: pointer;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 1px 6px 2px #ff2727;
+  }
+
+  &:focus {
+    cursor: pointer;
+    box-shadow: 0px 1px 2px 2px #ff1345;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-image: none;
+    box-shadow: none;
+    background-color: $medium-gray;
+  }
+}
