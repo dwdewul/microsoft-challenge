@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SignUpService } from 'src/app/services/sign-up.service';
 
 import { ConfirmationComponent } from './confirmation.component';
 
@@ -8,9 +10,9 @@ describe('ConfirmationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConfirmationComponent ]
-    })
-    .compileComponents();
+      declarations: [ConfirmationComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

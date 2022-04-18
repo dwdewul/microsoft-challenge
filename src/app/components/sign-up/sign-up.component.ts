@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SignUpService } from 'src/app/services/sign-up.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,24 +12,27 @@ export class SignUpComponent implements OnInit {
   public signUpForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(8)],
-      // updateOn: 'blur',
-    }),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
   });
 
   public isLoading: boolean = false;
 
-  constructor() {}
+  constructor(private _router: Router, private _signUpService: SignUpService) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
-    // todo: add event emitter to create state for user's first name
-  }
+    this.isLoading = true;
+    this._signUpService.userData = this.signUpForm.value;
 
-  onChange() {
-    console.log(this.signUpForm);
+    // to mock an http request time
+    setTimeout(() => {
+      this.isLoading = false;
+      this._router.navigateByUrl('/success');
+    }, 1500);
   }
 
   get firstNameField() {
