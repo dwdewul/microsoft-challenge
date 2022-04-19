@@ -18,7 +18,7 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit(): void {
     // In the event that the same route is reloaded without any available user data to display
     // then take them back to the sign up form
-    if (!this.userData.firstName) {
+    if (!this.userData.firstName || !this.userData.email) {
       this._router.navigateByUrl('');
     }
   }

@@ -11,12 +11,14 @@ const TIMEOUT_DEFAULT = '1500';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  private readonly _passwordCharacterCount: number = 10;
+
   public signUpForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(this._passwordCharacterCount),
     ]),
   });
 
@@ -73,7 +75,7 @@ export class SignUpComponent implements OnInit {
       this.passwordField?.hasError('minlength') &&
       this.passwordField.touched
     ) {
-      return 'Password must be at least 8 characters in length.';
+      return `Password must be at least ${this._passwordCharacterCount} characters in length.`;
     }
     if (
       this.passwordField?.hasError('required') &&
