@@ -13,22 +13,24 @@
   color: $dark-gray;
   outline: none;
   box-shadow: 0px 0px 2px 2px transparent;
+  padding: 0px 8px;
 
   ::placeholder {
     color: $light-gray;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 2px 2px $orange;
   }
 
   &:focus {
     box-shadow: 0px 0px 2px 2px $pink;
     outline: none;
   }
-
-  &:hover {
-    box-shadow: 0px 0px 2px 2px $orange;
-  }
 }
 
 .error-text {
+  padding-top: 4px;
   color: red;
 }
 

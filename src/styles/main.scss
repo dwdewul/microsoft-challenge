@@ -146,7 +146,8 @@ table {
   width: 344px;
   border-radius: $border-radius;
 
-  form {
+  form,
+  fieldset {
     display: flex;
     flex-direction: column;
   }
@@ -165,4 +166,19 @@ small {
 
 .font-weight-normal {
   font-weight: 400;
+}
+
+@media screen and (max-width: 600px) {
+  // to give room for narrow screens
+  .form-wrapper {
+    width: 188px;
+  }
+}
+
+@media screen and (max-height: 567px) {
+  // to give room for short screens
+  .container {
+    margin-top: 25%;
+    margin-bottom: 25%;
+  }
 }

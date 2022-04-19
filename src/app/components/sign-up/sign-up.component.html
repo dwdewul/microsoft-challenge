@@ -17,26 +17,24 @@
     (ngSubmit)="onSubmit()"
     *ngIf="!isLoading; else loadingSpinner"
   >
-    <label class="label" for="first-name">First Name</label>
-    <input
-      autocomplete="off"
-      class="input"
-      id="first-name"
-      formControlName="firstName"
-    />
-    <small
-      class="error-text"
-      *ngIf="firstNameField?.hasError('required') && firstNameField?.touched"
-      >First Name is required.</small
-    >
+    <fieldset>
+      <label class="label" for="first-name">First Name</label>
+      <input class="input" id="first-name" formControlName="firstName" />
+      <small class="error-text">{{ firstNameFieldErrorMessage }}</small>
 
-    <label class="label" for="email-address">Email Address</label>
-    <input class="input" id="email-address" formControlName="email" />
-    <small class="error-text">{{ emailFieldErrorMessage }}</small>
+      <label class="label" for="email-address">Email Address</label>
+      <input class="input" id="email-address" formControlName="email" />
+      <small class="error-text">{{ emailFieldErrorMessage }}</small>
 
-    <label class="label" for="password">Password</label>
-    <input class="input" id="password" formControlName="password" />
-    <small class="error-text">{{ passwordFieldErrorMessage }}</small>
+      <label class="label" for="password">Password</label>
+      <input
+        class="input"
+        id="password"
+        formControlName="password"
+        type="password"
+      />
+      <small class="error-text">{{ passwordFieldErrorMessage }}</small>
+    </fieldset>
 
     <div class="spacer-8"></div>
 

@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpService } from 'src/app/services/sign-up.service';
 
+const LOCAL_STORAGE_TIMEOUT_KEY = 'load_timeout_ms';
+const TIMEOUT_DEFAULT = '1500';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -22,17 +24,26 @@ export class SignUpComponent implements OnInit {
 
   constructor(private _router: Router, private _signUpService: SignUpService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // I decided to store the timeout in local storage in case anyone would like to override it
+    if (!localStorage.getItem(LOCAL_STORAGE_TIMEOUT_KEY)) {
+      localStorage.setItem(LOCAL_STORAGE_TIMEOUT_KEY, TIMEOUT_DEFAULT);
+    }
+  }
 
   onSubmit() {
     this.isLoading = true;
     this._signUpService.userData = this.signUpForm.value;
 
+    const timeout = parseInt(
+      localStorage.getItem(LOCAL_STORAGE_TIMEOUT_KEY) || TIMEOUT_DEFAULT
+    );
+
     // to mock an http request time
     setTimeout(() => {
       this.isLoading = false;
       this._router.navigateByUrl('/success');
-    }, 1500);
+    }, timeout);
   }
 
   get firstNameField() {
@@ -52,7 +63,7 @@ export class SignUpComponent implements OnInit {
       this.firstNameField?.hasError('required') &&
       this.firstNameField.touched
     ) {
-      return 'Password is required.';
+      return 'First name is required.';
     }
     return '';
   }
