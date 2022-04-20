@@ -1,27 +1,45 @@
-# Flipgrid
+# Flipgrid Microsoft Coding Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+## About
 
-## Development server
+You can view the deployed site here: [https://dwdewul.github.io/microsoft-challenge/](https://dwdewul.github.io/microsoft-challenge/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project consists of a a sign up page and a confirmation page once the user has successfully signed up for the service.
 
-## Code scaffolding
+The sign up page has three fields which are required for a successful sign up: their first name, email address and a password. There are form validations on each field. The user cannot submit the form until the form is valid and is indicated by the "Sign Up" button being both functionally and visibly disabled. Furthermore, there are helper texts below each input field indicating why that particular field is invalid.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Field         | Requirements                                        |
+| ------------- | --------------------------------------------------- |
+| First Name    | Required.                                           |
+| Email Address | Required. Must be a valid email address.            |
+| Password      | Required. Must be at least 10 characters in length. |
 
-## Build
+Once the user has submitted the form they will be redirect to the confirmation page with their first name and email address displayed. Should that information not be available, say after a page refresh, the user will be redirected back to the sign up page. The "Sign In" button does not have any functionality per the instructions.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Notes
 
-## Running unit tests
+I added a loading spinner that appears once the user submits their credentials in the sign up form. The spinner is governed by a timeout which is set to simulate a HTTP request to the server. If you would like to override this, you can open the console in the dev tools for the page and enter the following:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`localStorage.setItem('load_timeout_ms', '0');`
 
-## Running end-to-end tests
+## How To Run the Project Locally
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Node.js version > 14.15.0 is required.
 
-## Further help
+You can download it [here](https://nodejs.org/en/download/).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+You will also need Angular version 13 which you can install using the following command:
+
+`npm i -g @angular/cli@13.3.3`
+
+Next, you will need to pull the project from GitHub:
+
+`git clone https://github.com/dwdewul/microsoft-challenge.git ddewulf-challenge`
+
+Navigate to the project folder's root and run the following command to install the necessary packages:
+
+`npm i`
+
+Once all of the above are installed, you can run the project using the follwing command:
+
+`ng serve -o`
