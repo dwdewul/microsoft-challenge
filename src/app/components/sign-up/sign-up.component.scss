@@ -7,7 +7,7 @@
 }
 
 .input {
-  height: 28px;
+  height: $base-font-size * 2;
   border-radius: $border-radius;
   border: 1px solid $light-gray;
   color: $dark-gray;
@@ -22,6 +22,10 @@
   &:focus {
     box-shadow: 0px 0px 2px 2px $pink;
     outline: none;
+  }
+
+  @media screen and #{$mq-xxlarge} {
+    height: $base-font-size * 4;
   }
 }
 
